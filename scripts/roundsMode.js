@@ -218,6 +218,31 @@ writeRoundToTable(thisRound,rowIndex);
 }
 
 /*************************************************************************
+ * @function confirmDelete
+ * @desc
+ * Present pop-up modal dialog asking user to confirm delete operation
+ * @param roundId -- the unique id of the round to be deleted
+ * @returns -- true if user confirms delete, false otherwise
+ *************************************************************************/
+function confirmDelete(roundId) {
+  let modal = new bootstrap.Modal(
+      document.getElementById("confirmDeleteRoundModal")
+  );
+  let confirmBtn = document.getElementById("confirmDeleteBtn");
+  
+  // Use onclick to prevent duplicate event listeners
+  confirmBtn.onclick = function (event) {
+      event.preventDefault();
+      // Delegate all deletion logic to deleteRound()
+      deleteRound(roundId);
+      modal.hide();
+  };
+  
+  modal.show();
+}
+
+
+/*************************************************************************
 * @function populateRoundsTable 
 * @desc 
 * Iterate through the userData.rounds array, adding a row corresponding
