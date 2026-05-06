@@ -224,7 +224,7 @@ writeRoundToTable(thisRound,rowIndex);
  * @returns -- true if round could be deleted, false otherwise
  *************************************************************************/
 function deleteRound(roundId) {
-    GlobalUserData.rounds = GlobalUserData.rounds.filter(function (round) {
+            GlobalUserData.rounds = GlobalUserData.rounds.filter(function (round) {
         return round.roundNum !== roundId;
     });
 }
